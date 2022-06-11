@@ -3,6 +3,7 @@ package com.biblioteca.apirest.controllers;
 
 import com.biblioteca.apirest.models.Categoria;
 import com.biblioteca.apirest.models.Livro;
+import com.biblioteca.apirest.repository.CategoriaRepository;
 import com.biblioteca.apirest.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,28 +17,23 @@ public class LivroController {
     @Autowired
     LivroRepository livroRepository;
 
-    @GetMapping("/livros")
-    public List<Livro> listaLivros(){
-        return livroRepository.findAll();
+    @Autowired
+    CategoriaRepository categoriaRepository;
+
+    @GetMapping("categoria/{id}/livros")
+    public List<Livro> listaLivros(@PathVariable("id") long id){
+        Categoria categoria = categoriaRepository.findById(id);
+        List<Livro> livros = livroRepository.findByCategoria(categoria);
+        return livros;
     }
 
-    @GetMapping("/livro/{id}")
-    public Livro listaLivroUnico(@PathVariable(value="id") long id){
-        return livroRepository.findById(id);
-    }
 
-    @PostMapping("/livro")
-    public Livro salvaLivro(@RequestBody Livro livro) {
+    @PostMapping("categoria/{id}/livro")
+    public Livro salvaLivro(@RequestBody Livro livro, @PathVariable("id") long id) {
+        Categoria categoria = categoriaRepository.findById(id);
+        livro.setCategoria(categoria);
         return livroRepository.save(livro);
     }
 
-    @DeleteMapping("/livro")
-    public void deletaLivro(@RequestBody Livro livro) {
-        livroRepository.delete(livro);
-    }
 
-    @PutMapping("/livro")
-    public Livro atualizaLivro(@RequestBody Livro livro) {
-        return livroRepository.save(livro);
-    }
 }
