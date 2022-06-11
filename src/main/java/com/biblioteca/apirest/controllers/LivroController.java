@@ -20,8 +20,13 @@ public class LivroController {
     @Autowired
     CategoriaRepository categoriaRepository;
 
+    @GetMapping("livros")
+    public List<Livro> listaLivros(){
+        return livroRepository.findAll();
+    }
+
     @GetMapping("categoria/{id}/livros")
-    public List<Livro> listaLivros(@PathVariable("id") long id){
+    public List<Livro> listaLivrosCategoria(@PathVariable("id") long id){
         Categoria categoria = categoriaRepository.findById(id);
         List<Livro> livros = livroRepository.findByCategoria(categoria);
         return livros;
