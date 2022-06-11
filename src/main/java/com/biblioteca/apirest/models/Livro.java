@@ -7,12 +7,17 @@ import java.io.Serializable;
 @Table(name="TB_LIVRO")
 public class Livro implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private String titulo;
     private String isbn;
     private String editora;
+
+    @ManyToOne
+    private Categoria categoria;
     private int ano;
 
     public long getId() {
