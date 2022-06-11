@@ -15,10 +15,26 @@ public class Livro implements Serializable {
     private String titulo;
     private String isbn;
     private String editora;
-
     @ManyToOne
     private Categoria categoria;
     private int ano;
+    private String autor;
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public long getId() {
         return id;
