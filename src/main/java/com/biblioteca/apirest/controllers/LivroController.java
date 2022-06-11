@@ -20,7 +20,7 @@ public class LivroController {
     @Autowired
     CategoriaRepository categoriaRepository;
 
-    @GetMapping("livros")
+    @GetMapping("livros ")
     public List<Livro> listaLivros(){
         return livroRepository.findAll();
     }
