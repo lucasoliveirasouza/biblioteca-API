@@ -32,7 +32,6 @@ public class LivroController {
         return livros;
     }
 
-
     @PostMapping("categoria/{id}/livro")
     public Livro salvaLivro(@RequestBody Livro livro, @PathVariable("id") long id) {
         Categoria categoria = categoriaRepository.findById(id);
@@ -40,5 +39,18 @@ public class LivroController {
         return livroRepository.save(livro);
     }
 
+    @DeleteMapping("categoria/{id}/livro")
+    public void deletaLivro(@RequestBody Livro livro, @PathVariable("id") long id) {
+        Categoria categoria = categoriaRepository.findById(id);
+        livro.setCategoria(categoria);
+        livroRepository.delete(livro);
+    }
+
+    @PutMapping("categoria/{id}/livro")
+    public Livro atualizaLivro(@RequestBody Livro livro, @PathVariable("id") long id) {
+        Categoria categoria = categoriaRepository.findById(id);
+        livro.setCategoria(categoria);
+        return livroRepository.save(livro);
+    }
 
 }

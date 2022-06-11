@@ -26,16 +26,19 @@ public class CategoriaController {
 
     @PostMapping("/categoria")
     public Categoria salvaCategoria(@RequestBody Categoria categoria) {
+
         return categoriaRepository.save(categoria);
     }
 
     @DeleteMapping("/categoria")
     public void deletaCategoria(@RequestBody Categoria categoria) {
+
         categoriaRepository.delete(categoria);
     }
 
-    @PutMapping("/produto")
+    @PutMapping("/categoria")
     public Categoria atualizaCategoria(@RequestBody Categoria categoria) {
+
         return categoriaRepository.save(categoria);
     }
 
