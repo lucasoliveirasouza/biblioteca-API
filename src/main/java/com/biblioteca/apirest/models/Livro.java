@@ -19,6 +19,15 @@ public class Livro implements Serializable {
     private Categoria categoria;
     private int ano;
     private String autor;
+    private String imagem;
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
 
     public String getAutor() {
         return autor;
