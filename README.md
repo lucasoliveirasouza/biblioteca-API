@@ -11,7 +11,7 @@
 
 #### Este projeto faz uso das seguintes ferramentas e tecnologias:
 
-<img align="center" title="Java" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"> <img align="center" title="Spring" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg"> <img align="center" title="Postgres" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg"> <img align="center" title="Heroku" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-original.svg">
+<img align="center" title="Java" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg">  <img align="center" title="Spring" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg">  <img align="center" title="Postgres" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg">  <img align="center" title="Heroku" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-original.svg">
 
 ### Descrição:
 API de Biblioteca desenvolvida para estudo. Foi utilizado no desenvolvimento, a Framework Spring Boot com o banco Postgres para repositóro. Após construída foi realizado o deploy da API no Heroku para que ela pudesse ser consumida por aplicativo. A API encontra-se documentada no seguinte link: https://biblioteca-lucas.herokuapp.com/swagger-ui.html
