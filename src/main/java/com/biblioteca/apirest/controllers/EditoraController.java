@@ -18,7 +18,7 @@ public class EditoraController {
     @Autowired
     EditoraRepository editoraRepository;
 
-    @ApiOperation(value="Retorna uma lista com todos os editoras")
+    @ApiOperation(value="Retorna uma lista com todas os editoras")
     @GetMapping("/editoras")
     public List<Editora> listaEditoras(){
         return editoraRepository.findAll();
