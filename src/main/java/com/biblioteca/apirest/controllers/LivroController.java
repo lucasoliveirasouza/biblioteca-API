@@ -12,6 +12,7 @@ import com.biblioteca.apirest.repository.LivroRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class LivroController {
 
     @ApiOperation(value = "Retorna uma lista de todos livros")
     @GetMapping("livros")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Livro> listaLivros() {
 
         return livroRepository.findAll();
@@ -43,6 +45,7 @@ public class LivroController {
 
     @ApiOperation(value = "Cadastra um novo livro com base na categoria, autor e editora")
     @PostMapping("livro/{id_categoria}/{id_autor}/{id_editora}")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public Livro salvaLivro(@RequestBody Livro livro, @PathVariable("id_categoria") long id_categoria, @PathVariable("id_autor") long id_autor, @PathVariable("id_editora") long id_editora) {
         Categoria categoria = categoriaRepository.findById(id_categoria);
         livro.setCategoria(categoria);
@@ -58,6 +61,7 @@ public class LivroController {
 
     @ApiOperation(value = "Deleta um livro com base no id dele")
     @DeleteMapping("livro/{id}/")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public void deletaLivro(@PathVariable("id") long id) {
         Livro livro = livroRepository.findById(id);
         livroRepository.delete(livro);
@@ -65,6 +69,7 @@ public class LivroController {
 
     @ApiOperation(value = "Atualiza um livro com base na categoria, autor e editora")
     @PutMapping("livro/{id_categoria}/{id_autor}/{id_editora}")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public Livro atualizaLivro(@RequestBody Livro livro, @PathVariable("id_categoria") long id_categoria, @PathVariable("id_autor") long id_autor, @PathVariable("id_editora") long id_editora) {
         Categoria categoria = categoriaRepository.findById(id_categoria);
         livro.setCategoria(categoria);
@@ -81,6 +86,7 @@ public class LivroController {
 
     @ApiOperation(value = "Retorna uma lista de todos livros de uma categoria com base no ID dela")
     @GetMapping("categoria/{id}/livros")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Livro> listaLivrosCategoria(@PathVariable("id") long id) {
         Categoria categoria = categoriaRepository.findById(id);
         List<Livro> livros = livroRepository.findByCategoria(categoria);
@@ -89,6 +95,7 @@ public class LivroController {
 
     @ApiOperation(value = "Retorna uma lista de todos livros de um autor com base no ID dele")
     @GetMapping("autor/{id}/livros")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Livro> listaLivrosAutor(@PathVariable("id") long id) {
         Autor autor = autorRepository.findById(id);
         List<Livro> livros = livroRepository.findByAutor(autor);
@@ -97,6 +104,7 @@ public class LivroController {
 
     @ApiOperation(value = "Retorna uma lista de todos livros de uma editora com base no ID dela")
     @GetMapping("editora/{id}/livros")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Livro> listaLivrosEditora(@PathVariable("id") long id) {
         Editora editora = editoraRepository.findById(id);
         List<Livro> livros = livroRepository.findByEditora(editora);

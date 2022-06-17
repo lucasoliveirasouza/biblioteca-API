@@ -21,11 +21,13 @@ public class CategoriaController {
 
     @ApiOperation(value="Retorna uma lista com todas categorias")
     @GetMapping("/categorias")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Categoria> listaCategorias(){
 
         return categoriaRepository.findAll();
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     @ApiOperation(value="Retorna uma única categoria com base no id")
     @GetMapping("/categoria/{id}")
     public Categoria listaCategoriaUnica(@PathVariable(value="id") long id){
@@ -33,6 +35,7 @@ public class CategoriaController {
         return categoriaRepository.findById(id);
     }
 
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     @ApiOperation(value="Adiciona uma nova categoria")
     @PostMapping("/categoria")
     public Categoria salvaCategoria(@RequestBody Categoria categoria) {
@@ -40,6 +43,7 @@ public class CategoriaController {
         return categoriaRepository.save(categoria);
     }
 
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     @ApiOperation(value="Deleta uma categoria  com base no id")
     @DeleteMapping("/categoria/{id}")
     public void deletaCategoria(@PathVariable(value="id") long id) {
@@ -47,6 +51,7 @@ public class CategoriaController {
         categoriaRepository.delete(categoria);
     }
 
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     @ApiOperation(value="Atualiza uma categoria")
     @PutMapping("/categoria")
     public Categoria atualizaCategoria(@RequestBody Categoria categoria) {

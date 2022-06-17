@@ -5,6 +5,7 @@ import com.biblioteca.apirest.repository.EditoraRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,10 +21,13 @@ public class EditoraController {
 
     @ApiOperation(value="Retorna uma lista com todos os editoras")
     @GetMapping("/editoras")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Editora> listaEditoras(){
+
         return editoraRepository.findAll();
     }
 
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     @ApiOperation(value="Retorna uma única editora com base no id")
     @GetMapping("/editora/{id}")
     public Editora listaEditoraUnico(@PathVariable(value="id") long id){
@@ -31,6 +35,7 @@ public class EditoraController {
         return editoraRepository.findById(id);
     }
 
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     @ApiOperation(value="Adiciona uma nova editora")
     @PostMapping("/editora")
     public Editora salvaEditora(@RequestBody Editora editora) {
@@ -40,6 +45,7 @@ public class EditoraController {
 
     @ApiOperation(value="Deleta uma editora com base no id")
     @DeleteMapping("/editora/{id}")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public void deletaEditora(@PathVariable(value="id") long id) {
         Editora editora = editoraRepository.findById(id);
         editoraRepository.delete(editora);
@@ -47,6 +53,7 @@ public class EditoraController {
 
     @ApiOperation(value="Atualiza uma editora")
     @PutMapping("/editora")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public Editora atualizaEditora(@RequestBody Editora editora) {
 
         return editoraRepository.save(editora);
