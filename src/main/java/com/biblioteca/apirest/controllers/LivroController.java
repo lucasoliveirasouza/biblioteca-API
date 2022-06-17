@@ -59,8 +59,7 @@ public class LivroController {
     @ApiOperation(value = "Deleta um livro com base no id dele")
     @DeleteMapping("livro/{id}/")
     public void deletaLivro(@PathVariable("id") long id) {
-        Categoria categoria = categoriaRepository.findById(id);
-        livro.setCategoria(categoria);
+        Livro livro = livroRepository.findById(id);
         livroRepository.delete(livro);
     }
 
