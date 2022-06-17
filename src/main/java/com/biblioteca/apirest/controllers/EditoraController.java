@@ -1,6 +1,5 @@
 package com.biblioteca.apirest.controllers;
 
-
 import com.biblioteca.apirest.models.Editora;
 import com.biblioteca.apirest.repository.EditoraRepository;
 import io.swagger.annotations.Api;
@@ -28,24 +27,28 @@ public class EditoraController {
     @ApiOperation(value="Retorna uma única editora com base no id")
     @GetMapping("/editora/{id}")
     public Editora listaEditoraUnico(@PathVariable(value="id") long id){
+
         return editoraRepository.findById(id);
     }
 
     @ApiOperation(value="Adiciona uma nova editora")
     @PostMapping("/editora")
     public Editora salvaEditora(@RequestBody Editora editora) {
+
         return editoraRepository.save(editora);
     }
 
-    @ApiOperation(value="Deleta uma editora")
-    @DeleteMapping("/editora")
-    public void deletaEditora(@RequestBody Editora editora) {
+    @ApiOperation(value="Deleta uma editora com base no id")
+    @DeleteMapping("/editora/{id}")
+    public void deletaEditora(@PathVariable(value="id") long id) {
+        Editora editora = editoraRepository.findById(id);
         editoraRepository.delete(editora);
     }
 
     @ApiOperation(value="Atualiza uma editora")
     @PutMapping("/editora")
     public Editora atualizaEditora(@RequestBody Editora editora) {
+
         return editoraRepository.save(editora);
     }
 }

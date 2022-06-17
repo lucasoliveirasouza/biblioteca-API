@@ -39,10 +39,10 @@ public class AutorController {
         return autorRepository.save(autor);
     }
 
-    @ApiOperation(value="Deleta um autor")
-    @DeleteMapping("/autor")
-    public void deletaAutor(@RequestBody Autor autor) {
-
+    @ApiOperation(value="Deleta um autor com base no id")
+    @DeleteMapping("/autor/{id}")
+    public void deletaAutor(@PathVariable(value="id") long id) {
+        Autor autor = autorRepository.findById(id);
         autorRepository.delete(autor);
     }
 

@@ -39,10 +39,10 @@ public class CategoriaController {
         return categoriaRepository.save(categoria);
     }
 
-    @ApiOperation(value="Deleta uma categoria")
-    @DeleteMapping("/categoria")
-    public void deletaCategoria(@RequestBody Categoria categoria) {
-
+    @ApiOperation(value="Deleta uma categoria  com base no id")
+    @DeleteMapping("/categoria/{id}")
+    public void deletaCategoria(@PathVariable(value="id") long id) {
+        Categoria categoria = categoriaRepository.findById(id);
         categoriaRepository.delete(categoria);
     }
 

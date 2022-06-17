@@ -41,7 +41,7 @@ public class LivroController {
         return livroRepository.findAll();
     }
 
-    @ApiOperation(value = "Cadastra um novo livro em uma categoria com base no ID dela")
+    @ApiOperation(value = "Cadastra um novo livro com base na categoria, autor e editora")
     @PostMapping("livro/{id_categoria}/{id_autor}/{id_editora}")
     public Livro salvaLivro(@RequestBody Livro livro, @PathVariable("id_categoria") long id_categoria, @PathVariable("id_autor") long id_autor, @PathVariable("id_editora") long id_editora) {
         Categoria categoria = categoriaRepository.findById(id_categoria);
@@ -63,7 +63,7 @@ public class LivroController {
         livroRepository.delete(livro);
     }
 
-    @ApiOperation(value = "Atualiza um livro de uma categoria com base no ID dela")
+    @ApiOperation(value = "Atualiza um livro com base na categoria, autor e editora")
     @PutMapping("livro/{id_categoria}/{id_autor}/{id_editora}")
     public Livro atualizaLivro(@RequestBody Livro livro, @PathVariable("id_categoria") long id_categoria, @PathVariable("id_autor") long id_autor, @PathVariable("id_editora") long id_editora) {
         Categoria categoria = categoriaRepository.findById(id_categoria);
