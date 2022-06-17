@@ -12,6 +12,7 @@ import com.biblioteca.apirest.repository.UserRepository;
 import com.biblioteca.apirest.security.jwt.JwtUtils;
 import com.biblioteca.apirest.security.services.UserDetailsImpl;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -47,6 +48,7 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+    @ApiOperation(value="Realiza login e retorna token")
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -68,6 +70,7 @@ public class AuthController {
                 roles));
     }
 
+    @ApiOperation(value="Realiza cadastro de usuário")
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
