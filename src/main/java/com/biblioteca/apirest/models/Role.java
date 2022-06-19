@@ -5,9 +5,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "roles")
 public class Role {
+    private static final long serialVersionUID = 1L;
 
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Enumerated(EnumType.STRING)

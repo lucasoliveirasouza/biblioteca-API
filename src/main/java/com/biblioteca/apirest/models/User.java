@@ -1,6 +1,7 @@
 package com.biblioteca.apirest.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 import java.util.HashSet;
 import javax.validation.constraints.Email;
@@ -13,9 +14,10 @@ import javax.validation.constraints.Size;
                 @UniqueConstraint(columnNames = "username"),
                 @UniqueConstraint(columnNames = "email")
         })
-public class User {
+public class User implements Serializable {
+        private static final long serialVersionUID = 1L;
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
         @NotBlank
         @Size(max = 20)
