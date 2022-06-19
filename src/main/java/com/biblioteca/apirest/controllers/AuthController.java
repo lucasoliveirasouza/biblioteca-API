@@ -74,10 +74,10 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Erro: Já existe um usurio com esse nome!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Erro: Já existe um usuario com esse nome!"));
         }
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Erro: Já existe um usurio com esse email!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Erro: Já existe um usuario com esse email!"));
         }
         // Create new user's account
         User user = new User(signUpRequest.getUsername(),
