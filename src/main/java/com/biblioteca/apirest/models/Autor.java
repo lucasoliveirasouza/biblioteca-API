@@ -16,6 +16,7 @@ public class Autor implements Serializable {
     private long id;
     private String nome;
 
+
     @OneToMany
     private List<Livro> livros;
 
