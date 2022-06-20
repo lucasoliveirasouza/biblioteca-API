@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Biblioteca-API
 
 
