@@ -14,18 +14,39 @@ public class Livro implements Serializable {
     private long id;
     private String titulo;
     private String isbn;
-    private String editora;
     @ManyToOne
     private Categoria categoria;
-    private int ano;
-    private String autor;
 
-    public String getAutor() {
+    @ManyToOne
+    private Editora editora;
+
+    @ManyToOne
+    private Autor autor;
+    private int ano;
+    private String imagem;
+
+    public Editora getEditora() {
+        return editora;
+    }
+
+    public void setEditora(Editora editora) {
+        this.editora = editora;
+    }
+
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public Categoria getCategoria() {
@@ -58,14 +79,6 @@ public class Livro implements Serializable {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
-    }
-
-    public String getEditora() {
-        return editora;
-    }
-
-    public void setEditora(String editora) {
-        this.editora = editora;
     }
 
     public int getAno() {
