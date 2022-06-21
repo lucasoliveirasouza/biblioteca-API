@@ -74,13 +74,13 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Erro: Ja existe um usuario com esse nome!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Ja existe um usuario com esse nome!"));
         }
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Erro: Ja existe um usuario com esse email!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Ja existe um usuario com esse email!"));
         }
         if(signUpRequest.getPassword().length() < 6){
-            return ResponseEntity.badRequest().body(new MessageResponse("Erro: A senha possui menos de 6 caracteres!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("A senha possui menos de 6 caracteres!"));
         }
         // Create new user's account
         User user = new User(signUpRequest.getUsername(),
