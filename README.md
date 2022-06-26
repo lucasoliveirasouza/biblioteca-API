@@ -15,6 +15,6 @@
 
 ### Descrição:
 
-API de Biblioteca desenvolvida para estudo. Foi utilizado no desenvolvimento, a Framework Spring Boot com o banco Postgres para repositóro. Essa APi faz uso do Spring Security para que se possa ter a autenticação de usuário. Após construída, foi realizado o deploy da API no Heroku para que ela pudesse ser consumida por aplicativo. A API encontra-se documentada [aqui](https://biblioteca-luc.herokuapp.com/swagger-ui.html).
+API de Biblioteca desenvolvida para estudo. Foi utilizado no desenvolvimento, a Framework Spring Boot com o banco Postgres para repositóro. A Pi foi documentada utilizando o Swagger Essa APi faz uso do Spring Security para que se possa ter a autenticação de usuário. Após construída, foi realizado o deploy da API no Heroku para que ela pudesse ser consumida por aplicativo. A API encontra-se documentada [aqui](https://biblioteca-luc.herokuapp.com/swagger-ui.html).
 
 
